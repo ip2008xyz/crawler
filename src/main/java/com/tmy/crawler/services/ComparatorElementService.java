@@ -12,12 +12,14 @@ public class ComparatorElementService {
         List<SelenideElement> changed = new ArrayList<>();
 
         for (SelenideElement element : after) {
-            if (before.contains(element)) {
-                System.out.println("in before " + element);
-            } else {
-                System.out.println(element);
+            if (!before.contains(element)) {
+                changed.add(element);
             }
-
+        }
+        for (SelenideElement element : before) {
+            if (!after.contains(element)) {
+                changed.add(element);
+            }
         }
 
         return changed;

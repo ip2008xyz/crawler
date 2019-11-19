@@ -16,11 +16,19 @@ public class ScannerService {
     //TODO use config
     private List<String> elementsToScanFor = Arrays.asList("input", "button");
 
-    public List<SelenideElement> scanCurrentPage() {
+    public List<SelenideElement> scanForLinks() {
+        List<SelenideElement> elements = new ArrayList<>();
+        for (SelenideElement element : $$("a")) {
+            elements.add(element);
+        }
+        return elements;
+    }
+
+    public List<SelenideElement> scanForElements() {
         List<SelenideElement> elements = new ArrayList<>();
         for (String elementName : elementsToScanFor) {
             for (SelenideElement element : $$(elementName)) {
-                elements.add( element);
+                elements.add(element);
             }
         }
 
